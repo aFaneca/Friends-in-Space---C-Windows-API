@@ -12,23 +12,34 @@
 #include <tchar.h>
 
 #define MAXBOMBAS 50
-#define MAXNAVES 50
 #define MAXTIROS 50
 #define MAXDEFENSORES 2
+#define MAXINVASORES 20
 #define MAXPOWERUPS 100
 #define GRELHA_X 50
 #define GRELHA_Y 50
 
-typedef struct Nave {
+typedef struct Invasor {
 	int id;
-	char tipo;
+	char tipo; // 'B'ásico ou 'E'squivo
 	char nome[50];
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
 	int resistencia;
 
-} nave;
+} invasor;
+
+
+typedef struct Defensor {
+	int id;
+	char tipo; 
+	char nome[50];
+	int posx, posy;
+	int largura, altura;
+	int velocidade;
+
+} defensor;
 
 typedef struct Bomba {
 	int posx, posy;
@@ -56,18 +67,18 @@ typedef struct Powerup {
 
 typedef struct CampoDeJogo {
 	int grelha[GRELHA_X][GRELHA_Y];
-	nave naves[MAXNAVES];
+	defensor defensores[MAXDEFENSORES];
+	invasor invasores[MAXINVASORES];
 	bomba bombas[MAXBOMBAS];
 	tiro tiros[MAXTIROS];
 	powerup powerups[MAXPOWERUPS];
-	int dificuldade, nNaves, nBombas, nTiros, nPowerups;
+	int dificuldade, nInvasores, nDefensores, nBombas, nTiros, nPowerups;
 	
 }jogo;
-
-void adicionarNave(jogo *j, char tipo, int altura, int largura, int posx, int posy, int velocidade, int resistencia);
-void init(jogo *j);
-int contaNaves(jogo *j, char tipo);
+void adicionarInvasor(jogo *j, char tipo, int altura, int largura, int posx, int posy, int velocidade, int resistencia);
+void adicionarDefensor(jogo *j, char tipo, int altura, int largura, int posx, int posy, int velocidade);
+//int contaNaves(jogo *j, char tipo);
 void mostraInfo(jogo *j);
 char verificaPosicao(jogo *j, int x, int y);
-void removerNave(jogo *j, int indice);
-void alterarPosicao(jogo *j, int id, int novoX, int novoY);
+void removerNave(jogo *j, char tipo, int indice);
+void alterarPosicao(jogo *j, char tipo, int id, int novoX, int novoY);
