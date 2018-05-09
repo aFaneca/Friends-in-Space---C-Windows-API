@@ -82,3 +82,5 @@ void mostraInfo(jogo *j);
 char verificaPosicao(jogo *j, int x, int y);
 void removerNave(jogo *j, char tipo, int indice);
 void alterarPosicao(jogo *j, char tipo, int id, int novoX, int novoY);
+void lerComandos();
+TCHAR ** processaComando(TCHAR *comando, int *tamCMD);
