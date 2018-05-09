@@ -16,8 +16,10 @@
 #define MAXDEFENSORES 2
 #define MAXINVASORES 20
 #define MAXPOWERUPS 100
+#define MAXJOGADORES 5
 #define GRELHA_X 50
 #define GRELHA_Y 50
+#define TAM 200
 
 typedef struct Invasor {
 	int id;
@@ -33,8 +35,8 @@ typedef struct Invasor {
 
 typedef struct Defensor {
 	int id;
-	char tipo; 
-	char nome[50];
+	TCHAR tipo;
+	TCHAR nome[50];
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
@@ -57,13 +59,20 @@ typedef struct Tiro {
 
 
 typedef struct Powerup {
-	char nome[50];
-	char duracao; // 'P'ermanente ou 'T'emporário
-	char ocorrencia; // 'V'ulgar ou 'I'nvulgar
+	TCHAR nome[50];
+	TCHAR duracao; // 'P'ermanente ou 'T'emporário
+	TCHAR ocorrencia; // 'V'ulgar ou 'I'nvulgar
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
 } powerup;
+
+typedef struct Jogador {
+	TCHAR nome[50];
+	TCHAR pword[10];
+	int pontuacao;
+}jogador;
+
 
 typedef struct CampoDeJogo {
 	int grelha[GRELHA_X][GRELHA_Y];
@@ -72,9 +81,28 @@ typedef struct CampoDeJogo {
 	bomba bombas[MAXBOMBAS];
 	tiro tiros[MAXTIROS];
 	powerup powerups[MAXPOWERUPS];
-	int dificuldade, nInvasores, nDefensores, nBombas, nTiros, nPowerups;
+	jogador jogadores[MAXJOGADORES];
+	int dificuldade, nInvasores, nDefensores, nBombas, nTiros, nPowerups, nJogadores;
 	
 }jogo;
+
+DWORD thrBasicosId; //Id da thread a ser criada
+HANDLE hTBasicos;
+
+DWORD thrEsquivosId; //Id da thread a ser criada
+HANDLE hTEsquivos;
+
+DWORD thrTirosBombasPowerupsId; //Id da thread a ser criada
+HANDLE hTTirosBombasPowerups;
+
+DWORD thrTempEfeitosId; //Id da thread a ser criada
+HANDLE hTTempEfeitos;
+
+DWORD thrJogadoresId; //Id da thread a ser criada
+HANDLE hTJogadores;
+
+
+
 void adicionarInvasor(jogo *j, char tipo, int altura, int largura, int posx, int posy, int velocidade, int resistencia);
 void adicionarDefensor(jogo *j, char tipo, int altura, int largura, int posx, int posy, int velocidade);
 //int contaNaves(jogo *j, char tipo);
@@ -90,3 +118,8 @@ DWORD WINAPI GerirBasicos(LPVOID param);
 DWORD WINAPI GerirEsquivos(LPVOID param);
 DWORD WINAPI GerirTirosBombasPowerups(LPVOID param);
 DWORD WINAPI GerirTempEfeitos(LPVOID param);
+int getPontuacao(jogo *j, TCHAR *nomeDoJogador);
+void guardarPontuacao(jogo *j, TCHAR *nomeDoJogador);
+void adicionarJogador(jogo *j, TCHAR *nome, TCHAR *pword);
+int getPontuacao(jogo *j, TCHAR *nomeDoJogador);
+int recuperarPontuacao(jogo *j, TCHAR *nomeDoJogador);
