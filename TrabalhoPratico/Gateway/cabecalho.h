@@ -29,6 +29,7 @@ typedef struct Invasor {
 	int largura, altura;
 	int velocidade;
 	int resistencia;
+	int direcaoDoMovimento; // 1 - esquerda para a direita | -1 - direita para a esquerda
 
 } invasor;
 
@@ -40,6 +41,7 @@ typedef struct Defensor {
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
+	int direcaoDoMovimento; // 1 - esquerda para a direita | -1 - direita para a esquerda
 
 } defensor;
 
@@ -85,7 +87,7 @@ typedef struct CampoDeJogo {
 
 }jogo;
 
-//jogo *j = (jogo *)malloc(sizeof(jogo));
+//jogo *j = (jogo *)malloc(sizeof(jogo)); <- a alocação é feita pelo próprio MapViewOfFile, logo esta linha era redundante
 jogo *j;
 
 
