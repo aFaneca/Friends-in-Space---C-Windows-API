@@ -16,12 +16,10 @@
 
 
 // MANUTENÇÃO DO JOGO EM MEMÓRIA PARTILHADA
-//#define BASE_MEM     (VOID*)0x01000000
-#define BUF_SIZE 25600
 TCHAR nomeDaMemoria[] = TEXT("EstruturaDoJogo");
 TCHAR nomeDoMutex[] = TEXT("mutexComunicacao");
 TCHAR nomeDoEventoComunicacao[] = TEXT("eventoComunicacao");
-//TCHAR szMsg[] = TEXT("Message from process1.");
+
 
 typedef struct Invasor {
 	int id;

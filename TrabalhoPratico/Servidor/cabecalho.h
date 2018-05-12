@@ -19,14 +19,14 @@
 #define DIM_X 50
 #define DIM_Y 50
 #define TAM 200
+#define VELOCIDADE_BASE_INVASORES 1
+#define INTERVALO_MOVIMENTACAO 1000 //ms
 
 // MANUTENÇÃO DO JOGO EM MEMÓRIA PARTILHADA
-//#define BASE_MEM     (VOID*)0x01000000
-#define BUF_SIZE 256
 TCHAR nomeDaMemoria[] = TEXT("EstruturaDoJogo");
 TCHAR nomeDoMutex[] = TEXT("mutexComunicacao");
 TCHAR nomeDoEventoComunicacao[] = TEXT("eventoComunicacao");
-//TCHAR szMsg[] = TEXT("Message from process1.");
+
 
 
 typedef struct Invasor {
@@ -37,6 +37,7 @@ typedef struct Invasor {
 	int largura, altura;
 	int velocidade;
 	int resistencia;
+	int direcaoDoMovimento; // 1 - esquerda para a direita | -1 - direita para a esquerda
 
 } invasor;
 
@@ -48,6 +49,7 @@ typedef struct Defensor {
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
+	int direcaoDoMovimento; // 1 - esquerda para a direita | -1 - direita para a esquerda
 
 } defensor;
 
