@@ -1,6 +1,5 @@
 #pragma once
-#define UNICODE
-#define _UNICODE
+
 
 #include <time.h>
 #include <windows.h>
@@ -17,9 +16,18 @@
 #define MAXINVASORES 20
 #define MAXPOWERUPS 100
 #define MAXJOGADORES 5
-#define GRELHA_X 50
-#define GRELHA_Y 50
+#define DIM_X 50
+#define DIM_Y 50
 #define TAM 200
+
+// MANUTENÇÃO DO JOGO EM MEMÓRIA PARTILHADA
+//#define BASE_MEM     (VOID*)0x01000000
+#define BUF_SIZE 256
+TCHAR nomeDaMemoria[] = TEXT("EstruturaDoJogo");
+TCHAR nomeDoMutex[] = TEXT("mutexComunicacao");
+TCHAR nomeDoEventoComunicacao[] = TEXT("eventoComunicacao");
+//TCHAR szMsg[] = TEXT("Message from process1.");
+
 
 typedef struct Invasor {
 	int id;
@@ -75,7 +83,6 @@ typedef struct Jogador {
 
 
 typedef struct CampoDeJogo {
-	int grelha[GRELHA_X][GRELHA_Y];
 	defensor defensores[MAXDEFENSORES];
 	invasor invasores[MAXINVASORES];
 	bomba bombas[MAXBOMBAS];
@@ -85,6 +92,8 @@ typedef struct CampoDeJogo {
 	int dificuldade, nInvasores, nDefensores, nBombas, nTiros, nPowerups, nJogadores;
 	
 }jogo;
+
+jogo *j = (jogo *)malloc(sizeof(jogo));
 
 DWORD thrBasicosId; //Id da thread a ser criada
 HANDLE hTBasicos;
@@ -123,3 +132,8 @@ void guardarPontuacao(jogo *j, TCHAR *nomeDoJogador);
 void adicionarJogador(jogo *j, TCHAR *nome, TCHAR *pword);
 int getPontuacao(jogo *j, TCHAR *nomeDoJogador);
 int recuperarPontuacao(jogo *j, TCHAR *nomeDoJogador);
+
+// COMUNICAÇÃO COM GATEWAY (ATRAVÉS DA DLL)
+HINSTANCE hDLL; // Handle para a DLL
+void(*ler)(); // para receber o método recebe() da DLL
+void(*escrever)(TCHAR*); // para receber o método escrever() da DLL
