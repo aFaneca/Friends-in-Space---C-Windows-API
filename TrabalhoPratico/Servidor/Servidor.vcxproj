@@ -147,7 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="cabecalho.h" />
+    <ClInclude Include="servidor.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
