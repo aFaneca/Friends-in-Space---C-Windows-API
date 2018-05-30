@@ -6,7 +6,6 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-
 #define MAXBOMBAS 50
 #define MAXTIROS 50
 #define MAXDEFENSORES 2
@@ -19,13 +18,6 @@
 #define PIPE_NAME TEXT("\\\\.\\pipe\\tpso2") 
 #define NCLIENTES 10
 #define TAM 256
-
-
-// MANUTENÇÃO DO JOGO EM MEMÓRIA PARTILHADA
-TCHAR nomeDaMemoria[] = TEXT("EstruturaDoJogo");
-TCHAR nomeDoMutex[] = TEXT("mutexComunicacao");
-TCHAR nomeDoEventoComunicacao[] = TEXT("eventoComunicacao");
-
 
 typedef struct Invasor {
 	int id;
@@ -96,11 +88,6 @@ typedef struct CampoDeJogo {
 //jogo *j = (jogo *)malloc(sizeof(jogo)); <- a alocação é feita pelo próprio MapViewOfFile, logo esta linha era redundante
 jogo *j;
 
-
-HINSTANCE hDLL; // Handle para a DLL
-void(*ler)(); // para receber o método recebe() da DLL
-void(*escrever)(TCHAR*); // para receber o método escrever() da DLL
-
 OVERLAPPED ov;
 HANDLE IOReady;
 HANDLE hPipe;
@@ -109,7 +96,6 @@ DWORD n;
 HANDLE hClientes[NCLIENTES]; // Tabela de handles para diferentes clientes
 
 
+
+
 void enviarParaNamedPipe(TCHAR * string, HANDLE h);
-TCHAR * lerDoNamedPipe(HANDLE h);
-int pullInfoDoJogo();
-DWORD WINAPI aceitaClientes(LPVOID param);
