@@ -92,7 +92,7 @@ typedef struct CampoDeJogo {
 	powerup powerups[MAXPOWERUPS];
 	jogador jogadores[MAXJOGADORES];
 	int dificuldade, nInvasores, nDefensores, nBombas, nTiros, nPowerups, nJogadores;
-	
+
 }jogo;
 
 jogo *j = (jogo *)malloc(sizeof(jogo));
@@ -139,3 +139,7 @@ int recuperarPontuacao(jogo *j, TCHAR *nomeDoJogador);
 HINSTANCE hDLL; // Handle para a DLL
 void(*ler)(); // para receber o método recebe() da DLL
 void(*escrever)(TCHAR*); // para receber o método escrever() da DLL
+
+// PUSH INFO DO JOGO
+HANDLE hMapFile;
+LPCTSTR pBuf;

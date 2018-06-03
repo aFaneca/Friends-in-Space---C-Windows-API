@@ -113,3 +113,6 @@ void enviarParaNamedPipe(TCHAR * string, HANDLE h);
 TCHAR * lerDoNamedPipe(HANDLE h);
 int pullInfoDoJogo();
 DWORD WINAPI aceitaClientes(LPVOID param);
+
+// PULL INFO DO JOGO
+HANDLE hMapFile;
