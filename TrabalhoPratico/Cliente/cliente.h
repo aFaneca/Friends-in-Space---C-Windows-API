@@ -21,8 +21,8 @@
 
 typedef struct Invasor {
 	int id;
-	char tipo; // 'B'ásico ou 'E'squivo
-	char nome[50];
+	TCHAR tipo; // 'B'ásico ou 'E'squivo
+	TCHAR nome[50];
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
@@ -84,9 +84,10 @@ typedef struct CampoDeJogo {
 	int dificuldade, nInvasores, nDefensores, nBombas, nTiros, nPowerups, nJogadores;
 
 }jogo;
+jogo j;
 
-//jogo *j = (jogo *)malloc(sizeof(jogo)); <- a alocação é feita pelo próprio MapViewOfFile, logo esta linha era redundante
-jogo *j;
+//jogo *j = (jogo *)malloc(sizeof(jogo));
+//jogo *j;
 
 OVERLAPPED ov;
 HANDLE IOReady;
@@ -98,4 +99,4 @@ HANDLE hClientes[NCLIENTES]; // Tabela de handles para diferentes clientes
 
 
 
-void enviarParaNamedPipe(TCHAR * string, HANDLE h);
+void enviarPorNamedPipeParaClientes(TCHAR * string, HANDLE h);

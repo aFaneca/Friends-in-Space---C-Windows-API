@@ -32,7 +32,7 @@ TCHAR nomeDoEventoComunicacao[] = TEXT("eventoComunicacao");
 typedef struct Invasor {
 	int id;
 	char tipo; // 'B'ásico ou 'E'squivo
-	char nome[50];
+	TCHAR nome[50];
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
@@ -112,6 +112,9 @@ HANDLE hTTempEfeitos;
 DWORD thrJogadoresId; //Id da thread a ser criada
 HANDLE hTJogadores;
 
+DWORD thrEnviarJogo; //Id da thread a ser criada
+HANDLE hTEnviarJogo;
+
 
 
 void adicionarInvasor(jogo *j, char tipo, int altura, int largura, int posx, int posy, int velocidade, int resistencia);
@@ -123,18 +126,19 @@ void removerNave(jogo *j, char tipo, int indice);
 void alterarPosicao(jogo *j, char tipo, int id, int novoX, int novoY);
 void lerComandos(jogo *j);
 TCHAR ** processaComando(TCHAR *comando, int *tamCMD);
-void iniciarJogo(jogo *j);
+void iniciarJogo();
 DWORD WINAPI GerirJogadores(LPVOID param);
 DWORD WINAPI GerirBasicos(LPVOID param);
 DWORD WINAPI GerirEsquivos(LPVOID param);
 DWORD WINAPI GerirTirosBombasPowerups(LPVOID param);
 DWORD WINAPI GerirTempEfeitos(LPVOID param);
+DWORD WINAPI enviarJogo(LPVOID param);
 int getPontuacao(jogo *j, TCHAR *nomeDoJogador);
 void guardarPontuacao(jogo *j, TCHAR *nomeDoJogador);
 void adicionarJogador(jogo *j, TCHAR *nome, TCHAR *pword);
 int getPontuacao(jogo *j, TCHAR *nomeDoJogador);
 int recuperarPontuacao(jogo *j, TCHAR *nomeDoJogador);
-
+int pushInfoDoJogo();
 // COMUNICAÇÃO COM GATEWAY (ATRAVÉS DA DLL)
 HINSTANCE hDLL; // Handle para a DLL
 void(*ler)(); // para receber o método recebe() da DLL

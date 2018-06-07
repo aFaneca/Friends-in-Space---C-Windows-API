@@ -29,8 +29,8 @@ TCHAR nomeDoEventoComunicacao[] = TEXT("eventoComunicacao");
 
 typedef struct Invasor {
 	int id;
-	char tipo; // 'B'ásico ou 'E'squivo
-	char nome[50];
+	TCHAR tipo; // 'B'ásico ou 'E'squivo
+	TCHAR nome[50];
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
@@ -93,7 +93,7 @@ typedef struct CampoDeJogo {
 
 }jogo;
 
-//jogo *j = (jogo *)malloc(sizeof(jogo)); <- a alocação é feita pelo próprio MapViewOfFile, logo esta linha era redundante
+//jogo *j = (jogo *)malloc(sizeof(jogo)); //<- a alocação é feita pelo próprio MapViewOfFile, logo esta linha era redundante
 jogo *j;
 
 
@@ -109,10 +109,10 @@ DWORD n;
 HANDLE hClientes[NCLIENTES]; // Tabela de handles para diferentes clientes
 
 
-void enviarParaNamedPipe(TCHAR * string, HANDLE h);
+void enviarPorNamedPipeParaClientes(TCHAR * string, HANDLE h);
 TCHAR * lerDoNamedPipe(HANDLE h);
 int pullInfoDoJogo();
 DWORD WINAPI aceitaClientes(LPVOID param);
-
+void enviarPorNamedPipeParaClientes(HANDLE h);
 // PULL INFO DO JOGO
 HANDLE hMapFile;
