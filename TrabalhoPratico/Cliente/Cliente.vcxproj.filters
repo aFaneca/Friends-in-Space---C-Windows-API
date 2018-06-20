@@ -48,5 +48,11 @@
     <Image Include="Cliente.ico">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="bitmap1.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="bitmap2.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
 </Project>
