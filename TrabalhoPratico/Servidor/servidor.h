@@ -16,8 +16,8 @@
 #define MAXINVASORES 20
 #define MAXPOWERUPS 100
 #define MAXJOGADORES 5
-#define DIM_X 50
-#define DIM_Y 50
+#define DIM_X 500
+#define DIM_Y 500
 #define TAM 200
 #define VELOCIDADE_BASE_INVASORES 1
 #define INTERVALO_MOVIMENTACAO 1000 //ms
@@ -95,7 +95,8 @@ typedef struct CampoDeJogo {
 
 }jogo;
 
-jogo *j = (jogo *)malloc(sizeof(jogo));
+//jogo *j = (jogo *)malloc(sizeof(jogo));
+jogo j;
 
 DWORD thrBasicosId; //Id da thread a ser criada
 HANDLE hTBasicos;
@@ -117,14 +118,14 @@ HANDLE hTEnviarJogo;
 
 
 
-void adicionarInvasor(jogo *j, char tipo, int altura, int largura, int posx, int posy, int velocidade, int resistencia);
-void adicionarDefensor(jogo *j, char tipo, int altura, int largura, int posx, int posy, int velocidade);
+void adicionarInvasor(char tipo, int altura, int largura, int posx, int posy, int velocidade, int resistencia);
+void adicionarDefensor(char tipo, int altura, int largura, int posx, int posy, int velocidade);
 //int contaNaves(jogo *j, char tipo);
-void mostraInfo(jogo *j);
-char verificaPosicao(jogo *j, int x, int y);
-void removerNave(jogo *j, char tipo, int indice);
-void alterarPosicao(jogo *j, char tipo, int id, int novoX, int novoY);
-void lerComandos(jogo *j);
+void mostraInfo();
+char verificaPosicao(int x, int y);
+void removerNave(char tipo, int indice);
+void alterarPosicao(char tipo, int id, int novoX, int novoY);
+void lerComandos();
 TCHAR ** processaComando(TCHAR *comando, int *tamCMD);
 void iniciarJogo();
 DWORD WINAPI GerirJogadores(LPVOID param);
@@ -133,11 +134,11 @@ DWORD WINAPI GerirEsquivos(LPVOID param);
 DWORD WINAPI GerirTirosBombasPowerups(LPVOID param);
 DWORD WINAPI GerirTempEfeitos(LPVOID param);
 DWORD WINAPI enviarJogo(LPVOID param);
-int getPontuacao(jogo *j, TCHAR *nomeDoJogador);
-void guardarPontuacao(jogo *j, TCHAR *nomeDoJogador);
-void adicionarJogador(jogo *j, TCHAR *nome, TCHAR *pword);
-int getPontuacao(jogo *j, TCHAR *nomeDoJogador);
-int recuperarPontuacao(jogo *j, TCHAR *nomeDoJogador);
+int getPontuacao(TCHAR *nomeDoJogador);
+void guardarPontuacao(TCHAR *nomeDoJogador);
+void adicionarJogador(TCHAR *nome, TCHAR *pword);
+int getPontuacao(TCHAR *nomeDoJogador);
+int recuperarPontuacao(TCHAR *nomeDoJogador);
 int pushInfoDoJogo();
 // COMUNICAÇÃO COM GATEWAY (ATRAVÉS DA DLL)
 HINSTANCE hDLL; // Handle para a DLL

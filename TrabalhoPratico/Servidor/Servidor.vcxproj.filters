@@ -26,7 +26,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Servidor.cpp">
+    <ClCompile Include="Servidor.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
