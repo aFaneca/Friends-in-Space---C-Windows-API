@@ -84,5 +84,8 @@
     <Image Include="bitmap5.bmp">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="bmp00001.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
 </Project>
