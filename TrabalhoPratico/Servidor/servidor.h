@@ -16,11 +16,13 @@
 #define MAXINVASORES 20
 #define MAXPOWERUPS 100
 #define MAXJOGADORES 5
-#define DIM_X 500
-#define DIM_Y 500
+#define TAM_JANELA_X 1200
+#define TAM_JANELA_Y 800
+#define DIM_X TAM_JANELA_X - 50
+#define DIM_Y TAM_JANELA_Y - 50
 #define TAM 200
-#define VELOCIDADE_BASE_INVASORES 1
-#define INTERVALO_MOVIMENTACAO 1000 //ms
+#define VELOCIDADE_BASE_INVASORES 10 // 10 casas por movimento
+#define INTERVALO_MOVIMENTACAO 700 //ms
 #define ALTURA_PADRAO_TIRO 20
 #define LARGURA_PADRAO_TIRO 20
 #define VELOCIDADE_PADRAO_TIRO 100 //ms
@@ -129,11 +131,19 @@ HANDLE hTEnviarJogo;
 void adicionarInvasor(char tipo, int altura, int largura, int posx, int posy, int velocidade, int resistencia);
 void adicionarDefensor(char tipo, int altura, int largura, int posx, int posy, int velocidade);
 void adicionarBala();
-//int contaNaves(jogo *j, char tipo);
+int contaNaves(char tipo);
 void mostraInfo();
-char verificaPosicao(int x, int y);
+char verificaPosicao(int x, int y); // Retorna o tipo de nave presente nessa posiçãos (ou N se nenhuma)
+int verificaAlvo(int x, int y); // Retorna o id da nave presente nessa posição (ou -1 se nenhuma)
 void removerNave(char tipo, int indice);
 void alterarPosicao(char tipo, int id, int novoX, int novoY);
+int getPontuacao(TCHAR *nomeDoJogador);
+void guardarPontuacao(TCHAR *nomeDoJogador);
+void adicionarJogador(TCHAR *nome, TCHAR *pword);
+int getPontuacao(TCHAR *nomeDoJogador);
+int recuperarPontuacao(TCHAR *nomeDoJogador);
+int pushInfoDoJogo();
+
 void lerComandos();
 TCHAR ** processaComando(TCHAR *comando, int *tamCMD);
 void iniciarJogo();
@@ -145,12 +155,7 @@ DWORD WINAPI GerirEsquivos(LPVOID param);
 DWORD WINAPI GerirTirosBombasPowerups(LPVOID param);
 DWORD WINAPI GerirTempEfeitos(LPVOID param);
 DWORD WINAPI enviarJogo(LPVOID param);
-int getPontuacao(TCHAR *nomeDoJogador);
-void guardarPontuacao(TCHAR *nomeDoJogador);
-void adicionarJogador(TCHAR *nome, TCHAR *pword);
-int getPontuacao(TCHAR *nomeDoJogador);
-int recuperarPontuacao(TCHAR *nomeDoJogador);
-int pushInfoDoJogo();
+
 // COMUNICAÇÃO COM GATEWAY (ATRAVÉS DA DLL)
 HINSTANCE hDLL; // Handle para a DLL
 TCHAR *(*ler)(); // para receber o método recebe() da DLL
