@@ -63,8 +63,8 @@ typedef struct Tiro {
 	int largura;
 	int altura;
 	int velocidade;
+	int acertou; // 0 - não | 1 - acertou em algo
 } tiro;
-
 
 typedef struct Powerup {
 	TCHAR nome[50];

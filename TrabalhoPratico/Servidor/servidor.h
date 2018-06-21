@@ -21,6 +21,9 @@
 #define TAM 200
 #define VELOCIDADE_BASE_INVASORES 1
 #define INTERVALO_MOVIMENTACAO 1000 //ms
+#define ALTURA_PADRAO_TIRO 20
+#define LARGURA_PADRAO_TIRO 20
+#define VELOCIDADE_PADRAO_TIRO 100 //ms
 
 // MANUTENÇÃO DO JOGO EM MEMÓRIA PARTILHADA
 TCHAR nomeDaMemoria[] = TEXT("EstruturaDoJogo");
@@ -65,6 +68,7 @@ typedef struct Tiro {
 	int largura;
 	int altura;
 	int velocidade;
+	int acertou; // 0 - não | 1 - acertou em algo
 } tiro;
 
 
@@ -124,6 +128,7 @@ HANDLE hTEnviarJogo;
 
 void adicionarInvasor(char tipo, int altura, int largura, int posx, int posy, int velocidade, int resistencia);
 void adicionarDefensor(char tipo, int altura, int largura, int posx, int posy, int velocidade);
+void adicionarBala();
 //int contaNaves(jogo *j, char tipo);
 void mostraInfo();
 char verificaPosicao(int x, int y);
