@@ -165,9 +165,15 @@
     <ResourceCompile Include="Cliente.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="background.bmp">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="bitmap.bmp" />
     <Image Include="bitmap1.bmp" />
     <Image Include="bitmap2.bmp" />
     <Image Include="bitmap3.bmp" />
+    <Image Include="bitmap4.bmp" />
+    <Image Include="bits.bmp" />
     <Image Include="Cliente.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

@@ -57,5 +57,17 @@
     <Image Include="bitmap3.bmp">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="bitmap.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="bitmap4.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="bits.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="background.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
 </Project>
