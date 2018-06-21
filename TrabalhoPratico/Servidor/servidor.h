@@ -133,8 +133,8 @@ void adicionarDefensor(char tipo, int altura, int largura, int posx, int posy, i
 void adicionarBala();
 int contaNaves(char tipo);
 void mostraInfo();
-char verificaPosicao(int x, int y); // Retorna o tipo de nave presente nessa posiçãos (ou N se nenhuma)
-int verificaAlvo(int x, int y); // Retorna o id da nave presente nessa posição (ou -1 se nenhuma)
+char verificaPosicao(int x, int y, int altura, int largura); // Retorna o tipo de nave presente nessa posiçãos (ou N se nenhuma)
+int verificaAlvo(int x, int y, int altura, int largura); // Retorna o id da nave presente nessa posição (ou -1 se nenhuma)
 void removerNave(char tipo, int indice);
 void alterarPosicao(char tipo, int id, int novoX, int novoY);
 int getPontuacao(TCHAR *nomeDoJogador);
