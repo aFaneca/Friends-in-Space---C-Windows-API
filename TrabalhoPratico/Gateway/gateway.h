@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <windows.h>
 #include <tchar.h>
@@ -21,7 +21,7 @@
 #define TAM 256
 
 
-// MANUTENÇÃO DO JOGO EM MEMÓRIA PARTILHADA
+// MANUTENÃ‡ÃƒO DO JOGO EM MEMÃ“RIA PARTILHADA
 TCHAR nomeDaMemoria[] = TEXT("EstruturaDoJogo");
 TCHAR nomeDoMutex[] = TEXT("mutexComunicacao");
 TCHAR nomeDoEventoComunicacao[] = TEXT("eventoComunicacao");
@@ -29,13 +29,14 @@ TCHAR nomeDoEventoComunicacao[] = TEXT("eventoComunicacao");
 
 typedef struct Invasor {
 	int id;
-	TCHAR tipo; // 'B'ásico ou 'E'squivo
+	char tipo; // 'B'ï¿½sico ou 'E'squivo
 	TCHAR nome[50];
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
 	int resistencia;
 	int direcaoDoMovimento; // 1 - esquerda para a direita | -1 - direita para a esquerda
+	int movimentos;
 
 } invasor;
 
@@ -56,6 +57,7 @@ typedef struct Bomba {
 	int largura;
 	int altura;
 	int velocidade;
+	int acertou; // 0 - nï¿½o | 1 - acertou em algo
 } bomba;
 
 typedef struct Tiro {
@@ -63,12 +65,12 @@ typedef struct Tiro {
 	int largura;
 	int altura;
 	int velocidade;
-	int acertou; // 0 - não | 1 - acertou em algo
+	int acertou; // 0 - nÃ£o | 1 - acertou em algo
 } tiro;
 
 typedef struct Powerup {
 	TCHAR nome[50];
-	TCHAR duracao; // 'P'ermanente ou 'T'emporário
+	TCHAR duracao; // 'P'ermanente ou 'T'emporÃ¡rio
 	TCHAR ocorrencia; // 'V'ulgar ou 'I'nvulgar
 	int posx, posy;
 	int largura, altura;
@@ -93,13 +95,13 @@ typedef struct CampoDeJogo {
 
 }jogo;
 
-//jogo *j = (jogo *)malloc(sizeof(jogo)); //<- a alocação é feita pelo próprio MapViewOfFile, logo esta linha era redundante
+//jogo *j = (jogo *)malloc(sizeof(jogo)); //<- a alocaÃ§Ã£o Ã© feita pelo prÃ³prio MapViewOfFile, logo esta linha era redundante
 jogo *j;
 
 
 HINSTANCE hDLL; // Handle para a DLL
-void(*ler)(); // para receber o método recebe() da DLL
-void(*escrever)(TCHAR*); // para receber o método escrever() da DLL
+void(*ler)(); // para receber o mÃ©todo recebe() da DLL
+void(*escrever)(TCHAR*); // para receber o mÃ©todo escrever() da DLL
 
 OVERLAPPED ov;
 HANDLE IOReady;

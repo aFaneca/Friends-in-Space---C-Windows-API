@@ -18,14 +18,16 @@
 #define MAXJOGADORES 5
 #define TAM_JANELA_X 1200
 #define TAM_JANELA_Y 800
-#define DIM_X TAM_JANELA_X - 50
-#define DIM_Y TAM_JANELA_Y - 50
+#define DIM_X (TAM_JANELA_X - 50)
+#define DIM_Y (TAM_JANELA_Y - 100)
 #define TAM 200
 #define VELOCIDADE_BASE_INVASORES 10 // 10 casas por movimento
 #define INTERVALO_MOVIMENTACAO 700 //ms
 #define ALTURA_PADRAO_TIRO 20
 #define LARGURA_PADRAO_TIRO 5
 #define VELOCIDADE_PADRAO_TIRO 100 //ms
+#define TAXA_DISPARO_BASICA 10
+#define TAXA_DISPARO_ESQUIVA TAXA_DISPARO_BASICA * 0.6
 
 // MANUTEN��O DO JOGO EM MEM�RIA PARTILHADA
 TCHAR nomeDaMemoria[] = TEXT("EstruturaDoJogo");
@@ -43,6 +45,7 @@ typedef struct Invasor {
 	int velocidade;
 	int resistencia;
 	int direcaoDoMovimento; // 1 - esquerda para a direita | -1 - direita para a esquerda
+	int movimentos; 
 
 } invasor;
 
@@ -63,6 +66,7 @@ typedef struct Bomba {
 	int largura;
 	int altura;
 	int velocidade;
+	int acertou; // 0 - n�o | 1 - acertou em algo
 } bomba;
 
 typedef struct Tiro {
@@ -143,7 +147,7 @@ void adicionarJogador(TCHAR *nome, TCHAR *pword);
 int getPontuacao(TCHAR *nomeDoJogador);
 int recuperarPontuacao(TCHAR *nomeDoJogador);
 int pushInfoDoJogo();
-
+int nrAleatorio(int min, int max);
 void lerComandos();
 TCHAR ** processaComando(TCHAR *comando, int *tamCMD);
 void iniciarJogo();
