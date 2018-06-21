@@ -24,10 +24,10 @@
 #define VELOCIDADE_BASE_INVASORES 10 // 10 casas por movimento
 #define INTERVALO_MOVIMENTACAO 700 //ms
 #define ALTURA_PADRAO_TIRO 20
-#define LARGURA_PADRAO_TIRO 20
+#define LARGURA_PADRAO_TIRO 5
 #define VELOCIDADE_PADRAO_TIRO 100 //ms
 
-// MANUTENÇÃO DO JOGO EM MEMÓRIA PARTILHADA
+// MANUTENï¿½ï¿½O DO JOGO EM MEMï¿½RIA PARTILHADA
 TCHAR nomeDaMemoria[] = TEXT("EstruturaDoJogo");
 TCHAR nomeDoMutex[] = TEXT("mutexComunicacao");
 TCHAR nomeDoEventoComunicacao[] = TEXT("eventoComunicacao");
@@ -36,7 +36,7 @@ TCHAR nomeDoEventoComunicacao[] = TEXT("eventoComunicacao");
 
 typedef struct Invasor {
 	int id;
-	char tipo; // 'B'ásico ou 'E'squivo
+	char tipo; // 'B'ï¿½sico ou 'E'squivo
 	TCHAR nome[50];
 	int posx, posy;
 	int largura, altura;
@@ -70,13 +70,13 @@ typedef struct Tiro {
 	int largura;
 	int altura;
 	int velocidade;
-	int acertou; // 0 - não | 1 - acertou em algo
+	int acertou; // 0 - nï¿½o | 1 - acertou em algo
 } tiro;
 
 
 typedef struct Powerup {
 	TCHAR nome[50];
-	TCHAR duracao; // 'P'ermanente ou 'T'emporário
+	TCHAR duracao; // 'P'ermanente ou 'T'emporï¿½rio
 	TCHAR ocorrencia; // 'V'ulgar ou 'I'nvulgar
 	int posx, posy;
 	int largura, altura;
@@ -133,8 +133,8 @@ void adicionarDefensor(char tipo, int altura, int largura, int posx, int posy, i
 void adicionarBala();
 int contaNaves(char tipo);
 void mostraInfo();
-char verificaPosicao(int x, int y, int altura, int largura); // Retorna o tipo de nave presente nessa posiçãos (ou N se nenhuma)
-int verificaAlvo(int x, int y, int altura, int largura); // Retorna o id da nave presente nessa posição (ou -1 se nenhuma)
+char verificaPosicao(int x, int y, int altura, int largura); // Retorna o tipo de nave presente nessa posiï¿½ï¿½os (ou N se nenhuma)
+int verificaAlvo(int x, int y, int altura, int largura); // Retorna o id da nave presente nessa posiï¿½ï¿½o (ou -1 se nenhuma)
 void removerNave(char tipo, int indice);
 void alterarPosicao(char tipo, int id, int novoX, int novoY);
 int getPontuacao(TCHAR *nomeDoJogador);
@@ -156,10 +156,10 @@ DWORD WINAPI GerirTirosBombasPowerups(LPVOID param);
 DWORD WINAPI GerirTempEfeitos(LPVOID param);
 DWORD WINAPI enviarJogo(LPVOID param);
 
-// COMUNICAÇÃO COM GATEWAY (ATRAVÉS DA DLL)
+// COMUNICAï¿½ï¿½O COM GATEWAY (ATRAVï¿½S DA DLL)
 HINSTANCE hDLL; // Handle para a DLL
-TCHAR *(*ler)(); // para receber o método recebe() da DLL
-void(*escrever)(TCHAR*); // para receber o método escrever() da DLL
+TCHAR *(*ler)(); // para receber o mï¿½todo recebe() da DLL
+void(*escrever)(TCHAR*); // para receber o mï¿½todo escrever() da DLL
 
 // PUSH INFO DO JOGO
 HANDLE hMapFile;

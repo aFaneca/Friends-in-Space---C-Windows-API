@@ -81,5 +81,8 @@
     <Image Include="bitesquivo.bmp">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="bitmap5.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
 </Project>
