@@ -69,5 +69,17 @@
     <Image Include="background.bmp">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="bitbasica.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="bitesquiva.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="bitbasico.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="bitesquivo.bmp">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
 </Project>

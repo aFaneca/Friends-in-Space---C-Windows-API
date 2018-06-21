@@ -168,6 +168,10 @@
     <Image Include="background.bmp">
       <DeploymentContent>true</DeploymentContent>
     </Image>
+    <Image Include="bitbasica.bmp" />
+    <Image Include="bitbasico.bmp" />
+    <Image Include="bitesquiva.bmp" />
+    <Image Include="bitesquivo.bmp" />
     <Image Include="bitmap.bmp" />
     <Image Include="bitmap1.bmp" />
     <Image Include="bitmap2.bmp" />
