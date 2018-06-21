@@ -98,6 +98,10 @@ typedef struct CampoDeJogo {
 //jogo *j = (jogo *)malloc(sizeof(jogo));
 jogo j;
 
+
+DWORD thrLerOrdensId; //Id da thread a ser criada
+HANDLE hTLerOrdens;
+
 DWORD thrBasicosId; //Id da thread a ser criada
 HANDLE hTBasicos;
 
@@ -128,6 +132,8 @@ void alterarPosicao(char tipo, int id, int novoX, int novoY);
 void lerComandos();
 TCHAR ** processaComando(TCHAR *comando, int *tamCMD);
 void iniciarJogo();
+void processaOrdem(TCHAR * ordem);
+DWORD WINAPI LerOrdensDoGateway(LPVOID param);
 DWORD WINAPI GerirJogadores(LPVOID param);
 DWORD WINAPI GerirBasicos(LPVOID param);
 DWORD WINAPI GerirEsquivos(LPVOID param);
@@ -142,7 +148,7 @@ int recuperarPontuacao(TCHAR *nomeDoJogador);
 int pushInfoDoJogo();
 // COMUNICAÇÃO COM GATEWAY (ATRAVÉS DA DLL)
 HINSTANCE hDLL; // Handle para a DLL
-void(*ler)(); // para receber o método recebe() da DLL
+TCHAR *(*ler)(); // para receber o método recebe() da DLL
 void(*escrever)(TCHAR*); // para receber o método escrever() da DLL
 
 // PUSH INFO DO JOGO
