@@ -180,6 +180,7 @@
     <Image Include="bitmap3.bmp" />
     <Image Include="bitmap4.bmp" />
     <Image Include="bitmap5.bmp" />
+    <Image Include="bitmap6.bmp" />
     <Image Include="bits.bmp" />
     <Image Include="bmp00001.bmp" />
     <Image Include="Cliente.ico" />
