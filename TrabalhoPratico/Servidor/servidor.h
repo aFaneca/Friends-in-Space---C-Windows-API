@@ -140,6 +140,7 @@ void mostraInfo();
 char verificaPosicao(int x, int y, int altura, int largura); // Retorna o tipo de nave presente nessa posi��os (ou N se nenhuma)
 int verificaAlvo(int x, int y, int altura, int largura); // Retorna o id da nave presente nessa posi��o (ou -1 se nenhuma)
 void removerNave(char tipo, int indice);
+void removerTiro(int indice);
 void alterarPosicao(char tipo, int id, int novoX, int novoY);
 int getPontuacao(TCHAR *nomeDoJogador);
 void guardarPontuacao(TCHAR *nomeDoJogador);
