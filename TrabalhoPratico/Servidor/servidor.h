@@ -134,7 +134,7 @@ HANDLE hTEnviarJogo;
 
 void adicionarInvasor(char tipo, int altura, int largura, int posx, int posy, int velocidade, int resistencia);
 void adicionarDefensor(char tipo, int altura, int largura, int posx, int posy, int velocidade);
-void adicionarBala();
+void adicionarTiro();
 int contaNaves(char tipo);
 void mostraInfo();
 char verificaPosicao(int x, int y, int altura, int largura); // Retorna o tipo de nave presente nessa posi��os (ou N se nenhuma)
