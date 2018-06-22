@@ -49,7 +49,7 @@ typedef struct Defensor {
 	int largura, altura;
 	int velocidade;
 	int direcaoDoMovimento; // 1 - esquerda para a direita | -1 - direita para a esquerda
-
+	int idDosPowerups[100];
 } defensor;
 
 typedef struct Bomba {
@@ -65,16 +65,18 @@ typedef struct Tiro {
 	int largura;
 	int altura;
 	int velocidade;
-	int acertou; // 0 - não | 1 - acertou em algo
+	int acertou; // 0 - n�o | 1 - acertou em algo
 } tiro;
+
 
 typedef struct Powerup {
 	TCHAR nome[50];
-	TCHAR duracao; // 'P'ermanente ou 'T'emporário
+	TCHAR duracao; // 'P'ermanente ou 'T'empor�rio
 	TCHAR ocorrencia; // 'V'ulgar ou 'I'nvulgar
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
+	int acertou;
 } powerup;
 
 typedef struct Jogador {

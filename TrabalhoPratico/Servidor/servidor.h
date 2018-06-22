@@ -28,6 +28,7 @@
 #define VELOCIDADE_PADRAO_TIRO 100 //ms
 #define TAXA_DISPARO_BASICA 10
 #define TAXA_DISPARO_ESQUIVA TAXA_DISPARO_BASICA * 0.6
+#define PROBABILIDADE_POWERUPS 10
 
 // MANUTEN��O DO JOGO EM MEM�RIA PARTILHADA
 TCHAR nomeDaMemoria[] = TEXT("EstruturaDoJogo");
@@ -58,7 +59,7 @@ typedef struct Defensor {
 	int largura, altura;
 	int velocidade;
 	int direcaoDoMovimento; // 1 - esquerda para a direita | -1 - direita para a esquerda
-
+	int idDosPowerups[100];
 } defensor;
 
 typedef struct Bomba {
@@ -85,6 +86,7 @@ typedef struct Powerup {
 	int posx, posy;
 	int largura, altura;
 	int velocidade;
+	int acertou;
 } powerup;
 
 typedef struct Jogador {
