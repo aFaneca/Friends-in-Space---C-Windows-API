@@ -7,5 +7,5 @@ The game is composed of 3 different programs and multiple processes:
   - N Clients - responsible for the user interface of the game (communication gateway <-> client using *Named Pipes*)
   
  
- #Screenshots
+ # Screenshots
 ![Novo Jogo](http://afaneca.com/imagens/1.png)
